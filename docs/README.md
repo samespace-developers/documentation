@@ -28,7 +28,6 @@ Post Payload
 	"cloud_id":"CLOUD",
 	"cloud_sid":"CLOUDSID",
 	"auth_token":"your auth token",
-	“publish”:{...}
 	“record”: true, #defaults to false
 	"flow":[{...},{...}]
 }
