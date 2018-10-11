@@ -14,16 +14,12 @@ Using this REST API, you can make outgoing call flows,and query metadata about c
 
 All URLs referenced in the documentation have the following base:
 
-```
-https://developers.samespace.com/api/v2
-```
+```https://developers.samespace.com/api/v2```
 
 
 ### Call Flow API
 
-```
-/call/flow
-```
+```/call/flow```
 
 Post Payload
 
