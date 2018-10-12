@@ -88,15 +88,15 @@ next_step: next_step defines the id of next call flow object to be executed in t
 
 NOTE: Either of text or url field is mandatory
 
-#### Digits
+#### Input
 
 Using this Call Flow Object to gather digits from the user.
 
 ##### Example
 ```
 {
-            "id":<<some id>>,
-			"type":"digits",
+            		"id":<<some id>>,
+			"type":"keypad",
 			"count":4,
 			"flow":{
 				"*":<<some other id>>
