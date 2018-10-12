@@ -14,12 +14,16 @@ Using this REST API, you can make outgoing call flows,and query metadata about c
 
 All URLs referenced in the documentation have the following base:
 
-```https://api.samespace.com//api/public/v1```
+```
+https://api.samespace.com/api/public/v1
+```
 
 
 ### Call Flow API
 
-```/call/flow```
+```
+/call/flow
+```
 
 Post Payload
 
@@ -61,7 +65,7 @@ Using this Call Flow Object one can play a text or a media url.
 
 ##### Example
 ```
-{
+	{
 			"id":<<some id>>,
 			"type":"play",
 			"text":"Hi, My name is Sumeet Tiwari. Press 1 for apples or press 2 for oranges.",
@@ -83,7 +87,7 @@ Using this Call Flow Object to gather digits from the user.
 
 ##### Example
 ```
-{
+	{
             		"id":<<some id>>,
 			"type":"digits",
 			"count":4,
@@ -105,7 +109,7 @@ Using this Call Flow Object one can make http call during a call flow.
 
 ##### Example
 ```
-{
+	{
 			"id":<<some id>>,
 			"type":"http",
 			"url":"https://subdomain.domain.com/api/{{ID}}",
