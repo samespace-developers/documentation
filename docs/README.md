@@ -65,7 +65,7 @@ Using this Call Flow Object one can play a text or a media url.
 			"id":<<some id>>,
 			"type":"play",
 			"text":"Hi, My name is Sumeet Tiwari. Press 1 for apples or press 2 for oranges.",
-            "url":"http://link_to_media_file",
+            		"url":"http://link_to_media_file",
 			"next_step":<<some other id>>
 	}
 ```
