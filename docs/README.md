@@ -14,20 +14,20 @@ Using this REST API, you can make outgoing call flows,and query metadata about c
 
 All URLs referenced in the documentation have the following base:
 
-```
+```js
 https://api.samespace.com/api/public/v1
 ```
 
 
 ### Call Flow API
 
-```
+```js
 /call/flow
 ```
 
 Post Payload
 
-```
+```js
 {
 	"cloud_id":"CLOUD",
 	"auth_token":"your auth token",
@@ -45,14 +45,15 @@ Post Payload
 Using this Call Flow Object one can place a call to a number with a  specified caller id number.
 
 ##### Example
-```
+
+```js
 {
 			"id":<<some id>>,
 			"type":"call",
 			"number":"XXXXXX",
 			"caller_id":"123456",
 			"next_step":<<some other id>>
-	}
+}
 ```
 id : id can be any string unique for that particular call flow object.
 type: type defines the type of call flow object.("call" here)
@@ -64,14 +65,14 @@ next_step: next_step defines the id of next call flow object to be executed in t
 Using this Call Flow Object one can play a text or a media url.
 
 ##### Example
-```
-	{
+```js
+{
 			"id":<<some id>>,
 			"type":"play",
 			"text":"Hi, My name is Sumeet Tiwari. Press 1 for apples or press 2 for oranges.",
             		"url":"http://link_to_media_file",
 			"next_step":<<some other id>>
-	}
+}
 ```
 id : id can be any string unique for that particular call flow object.
 type: type defines the type of call flow object.("play" here)
@@ -86,8 +87,8 @@ NOTE: Either of text or url field is mandatory
 Using this Call Flow Object to gather digits from the user.
 
 ##### Example
-```
-	{
+```js
+{
             		"id":<<some id>>,
 			"type":"digits",
 			"count":4,
@@ -95,7 +96,7 @@ Using this Call Flow Object to gather digits from the user.
 				"*":<<some other id>>
 			 },
 			"variable":"ID"
-	}
+}
 ```
 id : id can be any string unique for that particular call flow object.
 type: type defines the type of call flow object.("digits" here)
@@ -108,8 +109,8 @@ variable: variable in which we should store input
 Using this Call Flow Object one can make http call during a call flow.
 
 ##### Example
-```
-	{
+```js
+{
 			"id":<<some id>>,
 			"type":"http",
 			"url":"https://subdomain.domain.com/api/{{ID}}",
@@ -118,7 +119,7 @@ Using this Call Flow Object one can make http call during a call flow.
 				"success":<<some id 1>>,
 				"fail":<<some id 2>>
 			 }
-	}
+}
 ```
 id : id can be any string unique for that particular call flow object.
 type: type defines the type of call flow object.("http" here)
@@ -131,13 +132,13 @@ Using this Call Flow Object one can connect to PSTN or internal entity.
 
 ##### Example
 ```
-	{
+{
 		    	"id":<<some id>>,
 			"type":"connect",
 			"number":"XXXXX",
 			"caller_id":"YYYY",
 			“next_step”:<<some id2>
-	}
+}
 ```
 id : id can be any string unique for that particular call flow object.
 type: type defines the type of call flow object.
