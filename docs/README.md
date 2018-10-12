@@ -101,7 +101,7 @@ Using this Call Flow Object to gather digits from the user.
 			"flow":{
 				"*":<<some other id>>
 			 },
-			"variable":"account_id"
+			"variable":"ID"
 	}
 ```
 id : id can be any string unique for that particular call flow object.
@@ -119,7 +119,7 @@ Using this Call Flow Object one can make http call during a call flow.
 {
 			"id":<<some id>>,
 			"type":"http",
-			"url":"https://subdomain.domain.com/api/{{account_id}}",
+			"url":"https://subdomain.domain.com/api/{{ID}}",
             "method":"GET",
 			"flow":{
 				"success":<<some id 1>>,
