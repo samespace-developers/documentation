@@ -14,7 +14,7 @@ Using this REST API, you can make outgoing call flows,and query metadata about c
 
 All URLs referenced in the documentation have the following base:
 
-```https://developers.samespace.com/api/v2```
+```https://api.samespace.com//api/public/v1```
 
 
 ### Call Flow API
@@ -26,20 +26,9 @@ Post Payload
 ```
 {
 	"cloud_id":"CLOUD",
-	"cloud_sid":"CLOUDSID",
 	"auth_token":"your auth token",
 	“record”: true, #defaults to false
 	"flow":[{...},{...}]
-}
-```
-
-"publish": this key contains configuration to publish real-time events to a url 
-
- Example: 
- ```
- publish: {
-		  url:”https://status_url”,
-		  method: “PUT” # defaults to POST 
 }
 ```
 
@@ -88,7 +77,7 @@ next_step: next_step defines the id of next call flow object to be executed in t
 
 NOTE: Either of text or url field is mandatory
 
-#### Input
+#### digits
 
 Using this Call Flow Object to gather digits from the user.
 
@@ -96,9 +85,9 @@ Using this Call Flow Object to gather digits from the user.
 ```
 {
             		"id":<<some id>>,
-			"type":"keypad",
+			"type":"digits",
 			"count":4,
-			"flow":{
+			"next_step":{
 				"*":<<some other id>>
 			 },
 			"variable":"ID"
@@ -120,8 +109,8 @@ Using this Call Flow Object one can make http call during a call flow.
 			"id":<<some id>>,
 			"type":"http",
 			"url":"https://subdomain.domain.com/api/{{ID}}",
-            "method":"GET",
-			"flow":{
+            		"method":"GET",
+			"next_step":{
 				"success":<<some id 1>>,
 				"fail":<<some id 2>>
 			 }
@@ -132,37 +121,14 @@ type: type defines the type of call flow object.("http" here)
 url: url 
 next_step: next_step defines the id of next call flow object to be executed in the flow.
 
-#### Callback
-
-Using this Call Flow Object one can set a callback for a time.
-
-##### Example
-```
-{
-			"id":<<some id>>,
-			"type":"callback",
-			"date":"2018-10-11",
-			"time":"20:48:00",
-			"timezone":"UTC",
-			"entity":5263,
-			"next_step":<<some other id>>
-	}
-```
-id : id can be any string unique for that particular call flow object.
-type: type defines the type of call flow object.("callback" here)
-date: valid date in YYYY-MM-DD format.
-time: time as per 24 hr clock
-timezone: timezone (eg; UTC).
-entity: voice id of either team or user
-
 #### Connect
 
 Using this Call Flow Object one can connect to PSTN or internal entity.
 
 ##### Example
 ```
-{
-		    "id":<<some id>>,
+	{
+		    	"id":<<some id>>,
 			"type":"connect",
 			"number":"XXXXX",
 			"caller_id":"YYYY",
@@ -178,8 +144,7 @@ next_step: next call flow object id.
 #### Sample POST payload
 ```
 {
-	"cloud_id":"dev",
-	"cloud_sid":"XXXXXXXX",
+	"cloud_id":"CLOUD_ID",
 	"auth_token":"your_auth_token",
 	"record":false,
 	"flow":[
@@ -200,25 +165,16 @@ next_step: next call flow object id.
 			"id":2,
 			"type":"digits",
 			"count":4,
-			"flow":{
+			"next_step":{
 				"*":5
 			 },
 			 "variable":"account_id"
 		},
 		{
-			"id":10,
-			"type":"callback",
-			"date":"2018-10-11",
-			"time":"20:48:00",
-			"timezone":"UTC",
-			"entity":5263,
-			"next_step":4
-		},
-		{
 			"id":5,
 			"type":"http",
-			"url":"https://in01c005d.samespace.com/api/test/{{account_id}}",
-			"flow":{
+			"url":"https://subdoomain.domain.com/api/test/{{account_id}}",
+			"next_step":{
 				"success":10,
 				"fail":4
 			 }
@@ -226,14 +182,14 @@ next_step: next call flow object id.
 		{
 			"id":3,
 			"type":"connect",
-			"number":"16468107000",
+			"number":"16468107XXX",
 			"caller_id":"12345678"
 		},	
 		{
 			"id":4,
 			"type":"connect",
 			"number":"5263",
-			"caller_id":"917507161643"
+			"caller_id":"917507XXXXX"
 		}
 	]
 }
